@@ -1,0 +1,24 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Iphone X",
+            "quantity": 5
+        },
+        {
+            "id": 2,
+            "name": "Samasung Galaxy S8",
+            "quantity": 5
+        },
+        {
+            "id": 3,
+            "name": "One plus 3T",
+            "quantity": 0
+        },
+        {
+            "id": 4,
+            "name": "Google Pixel 3",
+            "quantity": 5
+        }
+    ]
+}

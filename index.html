@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My first Vue app</title>
+  <!-- <script src="https://unpkg.com/vue"></script> -->
+  <script src="./vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+    {{ message }}
+    <br>
+
+    <ul>
+      <li v-for="item in products">
+        <input type="number" v-model.number="item.quantity"> {{item.name}}
+
+        <span v-if="item.quantity < 1">
+          - NOT AVAILABLE!
+        </span>
+
+
+        <!-- <button @click="item.quantity ++">
+          +
+        </button> -->
+
+      </li>
+    </ul>
+    <h2>Total: {{totalProducts}} </h2>
+
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Products List',
+        products: []
+      },
+
+      computed: {
+
+        totalProducts() {
+          return this.products.reduce((sum, product) => {
+            return sum + product.quantity
+          }, 0)
+        }
+      },
+
+      created() {
+
+        fetch('http://localhost:3000/products/')
+          .then(response => response.json())
+          .then(json => {
+            console.log(json)
+            this.products = json
+          })
+      }
+
+
+    })
+  </script>
+</body>
+
+</html>
